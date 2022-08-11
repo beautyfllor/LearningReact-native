@@ -3,7 +3,7 @@ import { View, Text, TextInput, StyleSheet } from "react-native";
 
 import COLORS from '../const/Colors'
 
-const Input = ({label})=>{
+const Input = ({label, ...props})=>{
     return(
         
         <View style={styles.formContainer}>
@@ -16,6 +16,7 @@ const Input = ({label})=>{
                 <TextInput 
                     style={styles.textInput}
                     autoCorrect={false}
+                    {...props}
                 />
 
             </View>

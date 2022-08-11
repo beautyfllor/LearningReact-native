@@ -1,5 +1,5 @@
 import React from "react";
-import {Text, View, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
 import Login from "./src/views/Login";
 import Register from "./src/views/Register";

@@ -8,7 +8,52 @@ import COLORS from "../const/Colors"
 
 const Register = () =>{
 
-    const nome = 'Register Screen';
+    /*** Screenshot with state ***/
+    //Creation of state struction that stores the typed data
+
+    const [inputs, setInputs] = React.useState({
+      title: '',
+      description: '',
+      cover: '',
+    });
+
+    //Function that handles an input of state data in the onChangeText method
+    const handlerOnChange = (text, input) => {
+      setInputs((prevState)=>(
+
+        console.log(prevState),
+        // console.log(input + ' ' + text)
+
+        /*** State date injection ***/
+        {...prevState, [input]:text}
+
+      ));
+    }
+
+    /*** Validation of registration data ***/
+    //Validation function
+    const validate = ()=>{
+
+      let validate = true;
+
+      if(!inputs.title) {
+        validate = false;
+        console.log('Title no content')
+      }
+
+      if(!inputs.description) {
+        validate = false;
+        console.log('Description no content')
+      }
+
+      if(!inputs.cover) {
+        validate = false;
+        console.log('Cover no content')
+      }
+
+    }
+
+    // const nome = 'Register Screen';
   
     return(
 
@@ -19,12 +64,12 @@ const Register = () =>{
 
           <View style={styles.viewForm}>
           
-            <Input label="Title"/>
-            <Input label="Description"/>
-            <Input label="Cover"/>
+            <Input label="Title" onChangeText={(text)=>handlerOnChange(text, 'title')}/>
+            <Input label="Description" onChangeText={(text)=>handlerOnChange(text, 'description')}/>
+            <Input label="Cover" onChangeText={(text)=>handlerOnChange(text, 'cover')}/>
 
             
-            <Button/>
+            <Button title='Register' onPress={validate}/>
 
         </View>
         </ScrollView>
