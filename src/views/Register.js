@@ -31,6 +31,16 @@ const Register = () =>{
     }
 
     /*** Validation of registration data ***/
+
+    //Fill error state
+    const [errors, setErrors] = React.useState({});
+
+    //Handler function that configure the error messages on the state
+    const handlerErrors = (errorMessage, input)=>{
+
+      setErrors((prevState) => ({...prevState, [input]:errorMessage}));
+    }
+
     //Validation function
     const validate = ()=>{
 
@@ -38,18 +48,23 @@ const Register = () =>{
 
       if(!inputs.title) {
         validate = false;
-        console.log('Title no content')
+        handlerErrors('Give the title of the book', 'title');
+        // console.log('Title no content')
       }
 
       if(!inputs.description) {
         validate = false;
-        console.log('Description no content')
+        handlerErrors('Give the description of the book', 'description');
+        // console.log('Description no content')
       }
 
       if(!inputs.cover) {
         validate = false;
-        console.log('Cover no content')
+        handlerErrors('Give the cover of the book', 'cover');
+        // console.log('Cover no content')
       }
+
+      console.log(errors);
 
     }
 
@@ -64,9 +79,21 @@ const Register = () =>{
 
           <View style={styles.viewForm}>
           
-            <Input label="Title" onChangeText={(text)=>handlerOnChange(text, 'title')}/>
-            <Input label="Description" onChangeText={(text)=>handlerOnChange(text, 'description')}/>
-            <Input label="Cover" onChangeText={(text)=>handlerOnChange(text, 'cover')}/>
+            <Input 
+                  label="Title" 
+                  error={errors.title} 
+                  onFocus={() => {handlerErrors(null, 'title')}} 
+                  onChangeText={(text)=>handlerOnChange(text, 'title')}/>
+            <Input 
+                  label="Description" 
+                  error={errors.description}
+                  onFocus={() => {handlerErrors(null, 'description')}}  
+                  onChangeText={(text)=>handlerOnChange(text, 'description')}/>
+            <Input 
+                  label="Cover" 
+                  error={errors.cover}
+                  onFocus={() => {handlerErrors(null, 'cover')}} 
+                  onChangeText={(text)=>handlerOnChange(text, 'cover')}/>
 
             
             <Button title='Register' onPress={validate}/>
