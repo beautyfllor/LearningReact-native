@@ -1,9 +1,12 @@
 import React from "react";
 import { View, Text, TextInput, StyleSheet } from "react-native";
 
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Colors } from "react-native/Libraries/NewAppScreen";
+
 import COLORS from '../const/Colors'
 
-const Input = ({label, error, onFocus=()=>{}, ...props})=>{
+const Input = ({label, iconName, error, onFocus=()=>{}, ...props})=>{
     return(
         
         <View style={styles.formContainer}>
@@ -11,6 +14,8 @@ const Input = ({label, error, onFocus=()=>{}, ...props})=>{
             <Text style={styles.inputLabel}>{label}</Text>
 
             <View style={[styles.inputContainer, {borderColor: error ? COLORS.red : COLORS.darkBlue}]}>
+
+                <Icon name={iconName} style={styles.icon}/>
 
                 <TextInput 
                     style={styles.textInput}
@@ -51,6 +56,11 @@ const styles = StyleSheet.create({
     },
     errorText:{
         color:COLORS.red
+    },
+    icon:{
+        fontSize:22,
+        color:COLORS.darkBlue,
+        marginRight:10
     }
 });
 

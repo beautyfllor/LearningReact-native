@@ -80,17 +80,20 @@ const Register = () =>{
           <View style={styles.viewForm}>
           
             <Input 
-                  label="Title" 
+                  label="Title"
+                  iconName="book-outline"
                   error={errors.title} 
                   onFocus={() => {handlerErrors(null, 'title')}} 
                   onChangeText={(text)=>handlerOnChange(text, 'title')}/>
             <Input 
-                  label="Description" 
+                  label="Description"
+                  iconName="card-text-outline"
                   error={errors.description}
                   onFocus={() => {handlerErrors(null, 'description')}}  
                   onChangeText={(text)=>handlerOnChange(text, 'description')}/>
             <Input 
-                  label="Cover" 
+                  label="Cover"
+                  iconName="image-outline"
                   error={errors.cover}
                   onFocus={() => {handlerErrors(null, 'cover')}} 
                   onChangeText={(text)=>handlerOnChange(text, 'cover')}/>
