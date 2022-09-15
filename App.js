@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 
 import Login from "./src/views/Login";
 import Register from "./src/views/Register";
+import Listing from "./src/views/Listing";
 
 // O nome da função deve ser igual ao nome do  arquivo 
 const App = () =>{
@@ -14,7 +15,8 @@ const App = () =>{
     // <View style={style.container}>
     //   <Text style={style.title}>{nome}</Text>
     // </View>
-    <Register/>
+    // <Register/>
+    <Listing/>
   );
 
 }

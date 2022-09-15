@@ -6,6 +6,8 @@ import Button from "../components/Button";
 
 import COLORS from "../const/Colors"
 
+import bookAPI from "../service/bookAPI";
+
 const Register = () =>{
 
     /*** Screenshot with state ***/
@@ -64,8 +66,26 @@ const Register = () =>{
         // console.log('Cover no content')
       }
 
+      if(validate){
+        //Send the data to the API to register
+        register();
+        console.log('Regitered')
+      }
+
       console.log(errors);
 
+    }
+
+    const register = () =>{
+
+      try{
+        const response = bookAPI.post('/registerBooks', 
+        {
+          title: inputs.title,
+          description: inputs.description,
+          image: inputs.cover,
+        })
+      }catch(error){}
     }
 
     // const nome = 'Register Screen';
