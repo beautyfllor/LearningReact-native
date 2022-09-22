@@ -15,8 +15,8 @@ const App = () =>{
     // <View style={style.container}>
     //   <Text style={style.title}>{nome}</Text>
     // </View>
-    // <Register/>
-    <Listing/>
+    <Register/>
+    // <Listing/>
   );
 
 }

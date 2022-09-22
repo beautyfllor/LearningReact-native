@@ -7,14 +7,15 @@ import bookCover150 from "../assets/books/lor150.png";
 
 const Listing = () => {
 
-    const [boks, setBooks] = useState([]);
+    const [books, setBooks] = useState([]);
 
     useEffect(
         () => {
             bookAPI.get('/listBooks')
             .then(
                 (data) => {
-                    console.log(data);
+                    console.log(data.data[5]);
+                    setBooks(data.data);
                 }
             )
         },
@@ -26,10 +27,16 @@ const Listing = () => {
 
             <View style={styles.container}>
 
-                <View style={styles.post}>
-                    <Image style={styles.image} source={bookCover150}/>
-                    <Text style={styles.title}>O Senhor dos Anéis</Text>
-                </View>
+                {
+                    books.map(
+                        book=>(
+                            <View style={styles.post}>
+                                <Image style={styles.image} source={bookCover150}/>
+                                <Text style={styles.title}>{book.title}</Text>
+                            </View>
+                        )
+                    )    
+                }
 
             </View>
 
