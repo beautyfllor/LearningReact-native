@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, Image } from "react-native";
+import { View, Text, StyleSheet, SafeAreaView, ScrollView, Image, TouchableOpacity } from "react-native";
 
 import COLORS from "../const/Colors"
 import bookAPI from "../service/bookAPI";
@@ -30,10 +30,18 @@ const Listing = () => {
                 {
                     books.map(
                         book=>(
-                            <View style={styles.post}>
-                                <Image style={styles.image} source={bookCover150}/>
-                                <Text style={styles.title}>{book.title}</Text>
-                            </View>
+                            <TouchableOpacity
+                                key={book.book_cod}
+                                style={styles.post}
+                                onPress={()=>{}}>
+
+                                <View>
+                                    <Image style={styles.image} source={bookCover150}/>
+                                    <Text style={styles.title}>{book.title}</Text>
+                                </View>
+
+                            </TouchableOpacity>
+                            
                         )
                     )    
                 }

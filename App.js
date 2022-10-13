@@ -1,9 +1,13 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 
-import Login from "./src/views/Login";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+const Stack = createNativeStackNavigator();
+
 import Register from "./src/views/Register";
 import Listing from "./src/views/Listing";
+import Details from "./src/views/Details";
 
 // O nome da função deve ser igual ao nome do  arquivo 
 const App = () =>{
@@ -11,32 +15,31 @@ const App = () =>{
   const nome = 'SENAI JANDIRA';
 
   return(
-    // A view é como se fosse a 'div'do html
-    // <View style={style.container}>
-    //   <Text style={style.title}>{nome}</Text>
-    // </View>
-    <Register/>
-    // <Listing/>
+
+    <Details/>
+    
+  //   <NavigationContainer>
+
+  //     <Stack.Navigator screenOptions={false}>
+
+  //       <Stack.Screen
+  //         name="Register"
+  //         component={Register}
+  //         options={{title: 'Book Registration'}}
+  //       />
+
+  //       <Stack.Screen
+  //         name="Listing"
+  //         component={Listing}
+  //         options={{title: 'Book Listing'}}
+  //       />
+
+
+  //     </Stack.Navigator>
+
+  //   </NavigationContainer>
   );
 
 }
 
-const style = StyleSheet.create({
-  container:{
-    height:"100%",
-    backgroundColor:"#000"
-  },
-  title:{
-    width:"100%",
-    backgroundColor:"#F00",
-    textAlign:"center",
-    fontSize:16,
-    lineHeight:26,
-    color:"#FFF",
-    fontWeight:"bold",
-    padding:16,
-  }
-});
-
-// Torna a funçào pública
 export default App;
