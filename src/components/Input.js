@@ -6,7 +6,7 @@ import { Colors } from "react-native/Libraries/NewAppScreen";
 
 import COLORS from '../const/Colors'
 
-const Input = ({label, iconName, error, onFocus=()=>{}, ...props})=>{
+const Input = ({label, iconName, error, onFocus=()=>{}, value, ...props})=>{
     return(
         
         <View style={styles.formContainer}>
@@ -21,6 +21,7 @@ const Input = ({label, iconName, error, onFocus=()=>{}, ...props})=>{
                     style={styles.textInput}
                     autoCorrect={false}
                     onFocus={()=>{onFocus()}}
+                    value={value}
                     {...props}
                 />
 

@@ -5,7 +5,7 @@ import COLORS from "../const/Colors"
 import bookAPI from "../service/bookAPI";
 import bookCover150 from "../assets/books/lor150.png";
 
-const Listing = () => {
+const Listing = ({ navigation }) => {
 
     const [books, setBooks] = useState([]);
 
@@ -33,7 +33,7 @@ const Listing = () => {
                             <TouchableOpacity
                                 key={book.book_cod}
                                 style={styles.post}
-                                onPress={()=>{}}>
+                                onPress={() => navigation.navigate('Details', {book_cod:book.book_cod})}>
 
                                 <View>
                                     <Image style={styles.image} source={bookCover150}/>

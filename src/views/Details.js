@@ -6,9 +6,9 @@ import bookAPI from "../service/bookAPI";
 import bookCover150 from "../assets/books/lor150.png";
 import COLORS from "../const/Colors";
 
-const Details = ()=>{
+const Details = ({route, navigation})=>{
 
-    const book_cod = 2;
+    const {book_cod} = route.params;
 
     const[book, setBook] = useState({
         book_cod:'',
@@ -22,12 +22,19 @@ const Details = ()=>{
             bookAPI.get(`/listBooks/${book_cod}`)
             .then(
                 (book)=>{
-                    setBook(book.data)
-                    // console.log(book.data)
+                    setBook(book.data);
                 }
             )
         }
     );
+
+
+        const del = (cod) => {
+            try {
+                bookAPI.delete(`/deleteBooks/${cod}`)
+                navigation.goBack();
+            }catch(error){}
+        }
 
         return(
 
@@ -46,18 +53,18 @@ const Details = ()=>{
                     <View style={styles.buttons}>
 
                         <TouchableOpacity
-                            style={styles.buttons}
-                            onPress={()=>{}}
+                            style={styles.button}
+                            onPress={()=>{navigation.navigate('Edit', {book_cod:book.book_cod})}}
                         >
-                            <Text style={styles.buttonText}>Edit</Text>
+                            <Text style={[styles.buttonText, {backgroundColor: COLORS.blue}]}>Edit</Text>
 
                         </TouchableOpacity>
 
                         <TouchableOpacity
-                            style={styles.buttons}
-                            onPress={()=>{}}
+                            style={styles.button}
+                            onPress={()=>del(book.book_cod)}
                         >
-                            <Text style={styles.buttonText}>Delete</Text>
+                            <Text style={[styles.buttonText, {backgroundColor: COLORS.red}]}>Delete</Text>
                             
                         </TouchableOpacity>
 
@@ -106,7 +113,7 @@ const styles = StyleSheet.create({
         justifyContent:'center'
     },
     button:{
-        width:'50%',
+        width:'25%',
         marginHorizontal:10
     },
     buttonText:{
